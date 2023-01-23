@@ -361,11 +361,6 @@ def main():
         tag1 = "Speckle"
         tag2 = "NOR"
 
-    dom_data = np.genfromtxt("./Models/" + cell + '_domains_200kb.bed', dtype=str).transpose()[3]
-    dom_data = dom_data[starting[index]:starting[index + 1]]
-    domains = np.where(dom_data == 'domain')[0]
-    dd = domains
-
     full_occ = np.array([])
     for i in range(n):
         _, occ = detecting_occupancy(pa[i], peak[i], vector)
