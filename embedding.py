@@ -2,7 +2,7 @@ import sys
 from alabtools import analysis
 import numpy as np
 import scipy.spatial.distance as dist
-from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D 
+from keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D 
 from keras.models import Model
 from tensorflow import image
 from sklearn import manifold
@@ -54,7 +54,7 @@ def build_model(N):
     x = UpSampling2D((5, 5))(x)
     x = Conv2D(16, (10, 10), activation='relu', strides=(1, 1), padding='same')(x)
     x = UpSampling2D((5, 5))(x)
-    output_x = Conv2D(1, (10, 10), activation='sigmoid', padding='same')(x)
+    output_x = Conv2D(1, (10, 10), activation='sigmoid', strides=(1, 1), padding='same')(x)
 
     return input_x, latent_x, output_x
 # Build autoencoder#
