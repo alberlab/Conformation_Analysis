@@ -382,8 +382,6 @@ def main():
     gyration = radius_gyration(coord, radius, full_occ, beads)
     tsa_seq_speckle, finalminlist = TSA_prediction(f, cell, allclusters_speckle, statesInfo, states, tag1, coordinates, radii, full_occ)
     tsa_seq_speckle = tsa_seq_speckle[starting[index]:starting[index + 1]]
-    tsa_seq_surface, finallist = TSA_surface_prediction(f, cell, states, coordinates, full_occ)
-    tsa_seq_surface = tsa_seq_surface[starting[index]:starting[index + 1]]
     saf_seq = speckle_association(finalminlist, 1000, radius)
     saf_seq = saf_seq[starting[index]:starting[index + 1]]
     
