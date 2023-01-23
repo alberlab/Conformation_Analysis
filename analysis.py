@@ -342,14 +342,9 @@ def main():
     allclusters_speckle = pickle.load(cs)
     cs.close()
 
-    if cell == "GM":
-        states = np.genfromtxt("./Models/" + cell + '_subcompartments.bed', dtype=None, encoding=None)
-        statesInfo = np.array(states['f3'].tolist() + states['f3'][:f.index.copy.sum()].tolist())
-        tag = "A1"
-    elif cell == "H1" or cell == "HFF":
-        states = np.genfromtxt("./Models/" + cell + '_SPINstates.bed', dtype=None, encoding=None)
-        statesInfo = np.array(states['f3'].tolist() + states['f3'][:f.index.copy.sum()].tolist())
-        tag = "Speckle"
+    states = np.genfromtxt("./Models/" + cell + '_subcompartments.bed', dtype=None, encoding=None)
+    statesInfo = np.array(states['f3'].tolist() + states['f3'][:f.index.copy.sum()].tolist())
+    tag = "A1"
 
     full_occ = np.array([])
     for i in range(n):
@@ -446,7 +441,7 @@ def main():
         rp_var_ratio = np.log2(sub_rp_var / rp_var)
         sub_gyration = radius_gyration(coord, radius, occ, beads)
         gyration_ratio = np.log2(sub_gyration / gyration)
-        sub_tsa_seq_speckle, finalminlist = TSA_prediction(f, cell, allclusters_speckle, statesInfo, states, tag1, coordinates, radii, occ)
+        sub_tsa_seq_speckle, finalminlist = TSA_prediction(f, cell, allclusters_speckle, statesInfo, states, tag, coordinates, radii, occ)
         sub_tsa_seq_speckle = sub_tsa_seq_speckle[starting[index]:starting[index + 1]]
         tsa_seq_speckle_ratio = np.log2(sub_tsa_seq_speckle / tsa_seq_speckle)
         sub_saf_seq = speckle_association(finalminlist, 1000, radius)
