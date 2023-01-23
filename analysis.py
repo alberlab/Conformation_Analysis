@@ -268,12 +268,7 @@ def TSA_prediction(f, cell, allclusters, statesInfo, states, tag, coord, radii, 
 
     ares = np.array(res).mean(axis=0)
     finalTSA = ares
-    if tag == "NOR":
-        nucleoli = np.genfromtxt("./Models/NOR_200kb.bed", dtype=str).transpose()[3]
-        not_nor = np.where(nucleoli != "NOR")[0]
-        finalTSA = np.log2(finalTSA[:len(states)] / np.mean(finalTSA[not_nor]))
-    else:
-        finalTSA = np.log2(finalTSA[:len(states)] / finalTSA.mean())
+    finalTSA = np.log2(finalTSA[:len(states)] / finalTSA.mean())
     
     return finalTSA, finalminlist
 # Calculate TSA-seq#
@@ -346,20 +341,15 @@ def main():
     cs = open("./Models/" + cell + '_speckle_clusters.dat', 'rb')
     allclusters_speckle = pickle.load(cs)
     cs.close()
-    cs = open("./Models/" + cell + '_nucleoli_clusters.dat', 'rb')
-    allclusters_nucleoli = pickle.load(cs)
-    cs.close()
 
     if cell == "GM":
         states = np.genfromtxt("./Models/" + cell + '_subcompartments.bed', dtype=None, encoding=None)
         statesInfo = np.array(states['f3'].tolist() + states['f3'][:f.index.copy.sum()].tolist())
-        tag1 = "A1"
-        tag2 = "NOR"
+        tag = "A1"
     elif cell == "H1" or cell == "HFF":
         states = np.genfromtxt("./Models/" + cell + '_SPINstates.bed', dtype=None, encoding=None)
         statesInfo = np.array(states['f3'].tolist() + states['f3'][:f.index.copy.sum()].tolist())
-        tag1 = "Speckle"
-        tag2 = "NOR"
+        tag = "Speckle"
 
     full_occ = np.array([])
     for i in range(n):
@@ -375,7 +365,7 @@ def main():
     else:
         rp, rp_var, rp_profile = radial_profile(coord, full_occ, beads, 5000.0)
     gyration = radius_gyration(coord, radius, full_occ, beads)
-    tsa_seq_speckle, finalminlist = TSA_prediction(f, cell, allclusters_speckle, statesInfo, states, tag1, coordinates, radii, full_occ)
+    tsa_seq_speckle, finalminlist = TSA_prediction(f, cell, allclusters_speckle, statesInfo, states, tag, coordinates, radii, full_occ)
     tsa_seq_speckle = tsa_seq_speckle[starting[index]:starting[index + 1]]
     saf_seq = speckle_association(finalminlist, 1000, radius)
     saf_seq = saf_seq[starting[index]:starting[index + 1]]
