@@ -17,7 +17,7 @@ Script used to perform embedding:
 ```
 python embedding.py <cell type> <chromosome index> <tag> <starting index> <ending index>
 ```
-where cell type can be GM, H1 or HFF (GM for GM12878, H1 for H1-hESC and HFF for HFFc6), chromosome index should be ranging from 1 to 23 (1 to 22 for H1 or HFF), tag is 0 or 1 depends on whether autoencoder has been performed or not, starting index and ending index indicate the bead range. 
+where "cell type" can be GM, H1 or HFF (GM for GM12878, H1 for H1-hESC and HFF for HFFc6), "chromosome index" should be ranging from 1 to 23 (1 to 22 for H1 or HFF), "tag" is 0 or 1 depends on whether autoencoder has been performed or not, "starting index" and "ending index" indicate the bead range. 
 
 The following command line generate the embedding results for the whole chromosome 6 (bead index 0 to 854) of GM12878 cell line:
 ```
