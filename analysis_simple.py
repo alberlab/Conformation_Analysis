@@ -17,7 +17,6 @@ from matplotlib import path
 import matplotlib.ticker as ticker
 import seaborn as sns
 from sklearn.neighbors import KDTree
-from sklearn.ensemble import IsolationForest
 
 
 def gaussian_kde(vector):
