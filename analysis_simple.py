@@ -308,10 +308,6 @@ def main():
         all_rp = ellipse_radial_profile(coord, full_occ , beads, 7840.0, 6470.0, 2450.0)
     else:
         all_rp = radial_profile(coord, full_occ , beads, 5000.0)
-    if cell == "GM":
-        a1, a2, b1, b2, b3, b4, null = subcompartment_state(cell, index)
-    else:
-        sp, ia1, ia2, ia3, ir1, ir2, nlm1, nlm2, lm, null = spin_state(cell, index)
     gyration = radius_gyration(coord, radius, full_occ, beads)
 
     occupancy = []
