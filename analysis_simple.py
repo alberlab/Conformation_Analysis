@@ -259,11 +259,11 @@ def main():
     end = int(sys.argv[4])
 
     if cell == "GM":
-        f = analysis.HssFile("../../GM_igm-model.hss", "r")
+        f = analysis.HssFile("./Models/GM_igm-model.hss", "r")
     elif cell == "H1":
-        f = analysis.HssFile("../../Control_H1_igm-model.hss", "r")
+        f = analysis.HssFile("./Models/H1_igm-model.hss", "r")
     elif cell == "HFF":
-        f = analysis.HssFile("../../Control_HFF_igm-model.hss", "r")
+        f = analysis.HssFile("./Models/HFF_igm-model.hss", "r")
     else:
         print("Unknown Cell Type.")
     vector = np.load("Encoded_" + cell + "_chr" + str(index + 1) + "_" + str(start) + "_" + str(end) + ".npy")
