@@ -1,5 +1,5 @@
 # Chromosome Conformation Analysis
-Scripts used to perform calculations including two-step dimension reduction and cluster analysis. Please cite: https://doi.org/10.1101/2023.02.18.528138.
+Scripts used to perform calculations including two-step dimension reduction and cluster analysis. Please cite: https://doi.org/10.1186/s13059-024-03472-8.
 ## Package Requirements
 - alabtools (https://github.com/alberlab/alabtools)
 - pickle
